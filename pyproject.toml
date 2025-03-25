@@ -1,7 +1,7 @@
 [project]
-name = "flask-deploy"
+name = "PhysicsJournalPickerAI"
 version = "0.1.0"
-description = "Add your description here"
+description = "Physics Journal Recommendations using BERT and ChromaDB."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
