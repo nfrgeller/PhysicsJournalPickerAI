@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Physics Journal Helper</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0c0f18;
+      color: #e0e0e0;
+      font-family: 'Noto Sans', sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+
+
+    form,
+    .result-container {
+      max-width: 600px;
+      margin: 20px auto;
+      text-align: left;
+    }
+
+    label,
+    textarea,
+    input {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    textarea,
+    input {
+      background-color: #333;
+      color: #e0e0e0;
+      border: 1px solid #555;
+      padding: 10px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
+
+    .error {
+      color: red;
+    }
+
+    .result {
+      margin-top: 10px;
+    }
+
+    h1,
+    h2 {
+      text-align: center;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin-left: 0;
+    }
+
+    li {
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .journal {
+      display: block;
+      font-style: italic;
+      margin-top: 5px;
+    }
+
+    .list-title {
+      margin-bottom: 10px;
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+
+    a {
+      color: #e0e0e0;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .label-result {
+      margin-bottom: 10px;
+      font-style: italic;
+      font-size: 1.25em;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Physics Journal Helper</h1>
+  <h4>Trying to find out which journal to submit your new physics paper to? Just submit your title and abstract below!
+  </h4>
+
+  {% if error %}
+  <p class="error">{{ error }}</p>
+  {% endif %}
+
+  <form method="post">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" value="{{ title }}" required>
+
+    <label for="abstract">Abstract:</label>
+    <textarea id="abstract" name="abstract" required>{{ abstract }}</textarea>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  {% if label %}
+  <div class="label-result">
+    {{ label }}
+  </div>
+  {% endif %}
+
+  {% if results %}
+  <div class="result-container">
+    <div class="result">
+      <div class="list-title">Similar Papers and their Journals for Reference:</div>
+      <ul>
+        {% for item in results %}
+        <li>
+          <a href="https://doi.org/{{ item.doi }}" target="_blank">{{ item.title }}</a>
+          <span class="journal">Journal: {{ item.journal }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div> {% endif %}
+</body>
+
+</html>
