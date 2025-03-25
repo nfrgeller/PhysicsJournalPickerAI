@@ -25,9 +25,9 @@ client = chromadb.PersistentClient(path=db_path)
 collection = client.get_collection(name="arxiv")
 
 # Load Tuned Model from Hugging Face: Fine-tuned BERT for classification
-tokenizer = AutoTokenizer.from_pretrained("pippalin/BERT_cluster", token=token)
+tokenizer = AutoTokenizer.from_pretrained("MODEL REPO NAME", token=token)
 model = AutoModelForSequenceClassification.from_pretrained(
-    "pippalin/BERT_cluster", token=token
+    "MODEL REPO NAME", token=token
 ).to(device)
 
 # Load the label2id mapping from the JSON file
