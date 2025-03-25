@@ -5,7 +5,7 @@ with open("./token.txt", "r") as f:
 
 print("Downloading the Vector Database from Hugging Face.")
 database_path = snapshot_download(
-    repo_id="BertFineTuneProject/arxiv_vector_db",
+    repo_id="URL FOR VECTOR DB",
     repo_type="dataset",
     cache_dir="./database",
     token=token,
